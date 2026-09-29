@@ -513,7 +513,7 @@ def build_equal_weight_portfolio(
 
     return portfolio
 
-def get_shares_outstanding(ticker, start_date=start_date):
+def get_shares_outstanding(ticker, start_date):
     """
     This function pulls historical shares outstanding for a given ticker.
 
@@ -544,7 +544,7 @@ def get_shares_outstanding(ticker, start_date=start_date):
 
     return shares_df
 
-def get_all_shares_outstanding(tickers):
+def get_all_shares_outstanding(tickers, start_date):
     """
     Once we have the individual shares outstanding data for each company, we need to combine these into one dataframe.
 
@@ -552,14 +552,14 @@ def get_all_shares_outstanding(tickers):
         tickers: exhaustive list of tickers
 
     Output:
-        dataframe complete with date, tickers and shares outstanding                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    o        ooooooooooodoooooodoododooooodooododooooddooodooooooodoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooojij
+        dataframe complete with date, tickers and shares outstanding                                                                                         
     """
 
     shares_list = []
 
     # Combine into one big dataframe using above function
     for ticker in tickers:
-        shares_df = get_shares_outstanding(ticker)
+        shares_df = get_shares_outstanding(ticker, start_date)
         shares_list.append(shares_df)
 
     all_shares_df = pd.concat(
