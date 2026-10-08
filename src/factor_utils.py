@@ -22,8 +22,6 @@ def get_cik(ticker):
         match.iloc[0]["cik_str"]
     ).zfill(10)
 
-get_cik("AAPL")
-
 def get_book_equity_sec(ticker, start_date):
     """
     Pull historical stockholders' equity from SEC EDGAR.
